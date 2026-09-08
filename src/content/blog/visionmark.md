@@ -1,25 +1,14 @@
 ---
-
 title: "VisionMark: Stop Feeding Raw PDFs to LLMs. Convert Them to Markdown First."
-
 description: "A hybrid document-to-Markdown pipeline that combines traditional parsers with Qwen2.5-VL for scanned PDFs, images, and layout-heavy documents."
-
-pubDate: 10-08-2026
-
+pubDate: 2026-08-10
 tags:
-
-* llm
-
-* rag
-
-* document-processing
-
-* computer-vision
-
-* systems
-
+  - llm
+  - rag
+  - document-processing
+  - computer-vision
+  - systems
 draft: false
-
 ---
 
 If you're a student or a developer, you've probably done this before.
