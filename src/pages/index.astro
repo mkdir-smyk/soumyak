@@ -35,9 +35,9 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="about-section">
     <h2>About</h2>
     <p>
-      I am a third-year Computer Science and Engineering undergraduate at 
+      I am a fourth-year Computer Science and Engineering undergraduate at 
       <strong>Vellore Institute of Technology, Bhopal</strong>. My academic interests lie at the intersection of 
-      machine learning systems, low-resource natural language processing, and scalable data pipelines.
+      machine learning systems, natural language processing, and recommendation systems.
     </p>
     <p>
       Recently, I was a Research Intern at the <strong>Indian Institute of Technology, Delhi</strong> (MISN Lab, Project AdiVaani), 
@@ -51,17 +51,16 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <hr />
 
-  <!-- Research & Technical Interests -->
-  <section class="interests-section">
-    <h2>Research & Technical Interests</h2>
-    <ul>
-      <li><strong>Natural Language Processing:</strong> Low-resource neural machine translation, multilingual representation learning.</li>
-      <li><strong>Parameter-Efficient Fine-Tuning:</strong> LoRA, Mixture-of-LoRA (MoA) adaptation architectures, quantization.</li>
-      <li><strong>Machine Learning Systems:</strong> GPU benchmarking, training pipeline efficiency, PyTorch optimizations.</li>
-      <li><strong>Information Retrieval & Databases:</strong> Vector embeddings, semantic similarity search with pgvector, RAG.</li>
-      <li><strong>Data Engineering & Audio:</strong> Acoustic standardization, voice activity detection (VAD), document ingestion pipelines.</li>
-    </ul>
-  </section>
+  <!-- Technical Interests -->
+<section class="interests-section">
+  <h2>Technical Interests</h2>
+  <ul>
+    <li><strong>Natural Language Processing:</strong> Low-resource neural machine translation, multilingual representation learning.</li>
+    <li><strong>Parameter-Efficient Fine-Tuning:</strong> LoRA, Mixture-of-LoRA (MoA) adaptation architectures, quantization.</li>
+    <li><strong>Machine Learning & Analytics:</strong> Predictive modeling, statistical analysis, model evaluation, and data-driven insights.</li>
+    <li><strong>Information Retrieval & Recommendation:</strong> Vector embeddings, semantic similarity search with pgvector, RAG, and recommendation systems.</li>
+  </ul>
+</section>
 
   <hr />
 
@@ -106,35 +105,6 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="item-desc">
         An automated pipeline preparing speech corpora for model training. Standardizes heterogeneous audio into 16kHz WAV and trims silence using Silero VAD, cutting storage footprint by ~30%.
       </p>
-    </div>
-  </section>
-
-  <hr />
-
-  <!-- Latest Writing -->
-  <section class="writing-section">
-    <h2>Latest Writing</h2>
-    {
-      latestPosts.map((post) => {
-        const postHref = `${baseUrl}/blog/${post.slug}`;
-        const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        });
-        return (
-          <div class="item-entry">
-            <div class="item-header">
-              <a href={postHref} class="item-title">{post.data.title}</a>
-              <time datetime={post.data.pubDate.toISOString()} class="item-meta">{formattedDate}</time>
-            </div>
-            <p class="item-desc">{post.data.description}</p>
-          </div>
-        );
-      })
-    }
-    <div style="margin-top: 1.5rem;">
-      <a href={`${baseUrl}/blog`} style="font-weight: 500;">→ View all posts</a>
     </div>
   </section>
 </BaseLayout>
