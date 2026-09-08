@@ -1,0 +1,370 @@
+/* ==========================================================================
+   Academic & Minimalist Global Stylesheet
+   Designed for high readability, zero bloat, and timeless typography.
+   ========================================================================== */
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --text-muted: #555555;
+  --accent-color: #1a4f8b; /* Deep academic navy */
+  --accent-hover: #0d2f59;
+  --border-color: #e2e4e8;
+  --code-bg: #f6f8fa;
+  --max-width: 680px;
+  --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Monaco, Consolas, monospace;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  flex: 1;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-color);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+/* Links */
+a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2.5px;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration-thickness: 1.5px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Horizontal Divider */
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+/* Navigation Header */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.site-title:hover {
+  color: var(--accent-color);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.site-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Lists */
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+/* Inline & Block Code */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background-color: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  border: 1px solid #e1e4e8;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  background-color: var(--code-bg) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.45;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* Blockquotes */
+blockquote {
+  margin: 1.5rem 0;
+  padding: 0 0 0 1rem;
+  border-left: 3px solid var(--border-color);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+th {
+  background-color: #fafbfc;
+  font-weight: 600;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.site-footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+.site-footer-links {
+  display: flex;
+  gap: 0.85rem;
+}
+
+/* Post and Section Item Listings */
+.item-entry {
+  margin-bottom: 1.4rem;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.item-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.item-title:hover {
+  text-decoration: underline;
+}
+
+.item-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.item-desc {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.tech-stack {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+  font-style: italic;
+}
+
+.tag-list {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.tag {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: #f1f3f5;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+}
+
+/* Resume Print Button */
+.resume-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.btn-print {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.btn-print:hover {
+  color: var(--text-color);
+  border-color: #999;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .site-container {
+    padding: 1.5rem 1rem 3rem;
+  }
+  
+  .site-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .item-header {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

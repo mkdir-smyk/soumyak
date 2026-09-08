@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostPreview from '../../components/PostPreview.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Group posts by "Month Year"
+const groupedPosts = posts.reduce((acc, post) => {
+  const monthYear = post.data.pubDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+  });
+  if (!acc[monthYear]) {
+    acc[monthYear] = [];
+  }
+  acc[monthYear].push(post);
+  return acc;
+}, {} as Record<string, typeof posts>);
+---
+
+<BaseLayout title="Blog" description="A collection of technical notes, tutorials, experiments, and research logs.">
+  <section class="blog-header" style="margin-bottom: 2rem;">
+    <h1 style="margin-bottom: 0.5rem;">Blog</h1>
+    <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 0;">
+      A collection of technical notes, tutorials, experiments, and things I have learned.
+    </p>
+  </section>
+
+  {
+    Object.entries(groupedPosts).map(([monthYear, monthPosts]) => (
+      <section class="blog-group">
+        <hr />
+        <h3 style="font-size: 1.15rem; color: var(--text-color); margin-top: 1.5rem; margin-bottom: 1.25rem;">
+          {monthYear}
+        </h3>
+        <div>
+          {monthPosts.map((post) => (
+            <PostPreview post={post} showTags={true} />
+          ))}
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>

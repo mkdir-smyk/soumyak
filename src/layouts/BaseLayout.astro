@@ -1,0 +1,59 @@
+---
+import { SITE } from '../config';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import '../styles/print.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogType?: string;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  ogType = 'website',
+} = Astro.props;
+
+const pageTitle = title === SITE.title ? title : `${title} — ${SITE.title}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || SITE.siteUrl);
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={SITE.title} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+  </head>
+  <body>
+    <div class="site-container">
+      <Header />
+      <main id="main-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

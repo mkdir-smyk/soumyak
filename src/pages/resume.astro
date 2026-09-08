@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+---
+
+<BaseLayout title="Resume" description={`Academic curriculum vitae of ${SITE.author}`}>
+  <article class="resume-content">
+    <header class="resume-header" style="margin-bottom: 2rem;">
+      <h1 style="margin-bottom: 0.25rem;">{SITE.author}</h1>
+      <p style="margin-bottom: 0.4rem; color: var(--text-muted); font-size: 0.95rem;">
+        {SITE.location}
+      </p>
+      <p style="margin-bottom: 0; font-size: 0.9rem;">
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        {SITE.phone && (
+          <>
+            <span> · </span>
+            <span>{SITE.phone}</span>
+          </>
+        )}
+        <span> · </span>
+        <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span> · </span>
+        <a href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </header>
+
+    <hr />
+
+    <!-- Education -->
+    <section class="resume-section">
+      <h2>Education</h2>
+      <div class="resume-item" style="margin-bottom: 1.25rem;">
+        <div class="item-header">
+          <strong>Vellore Institute of Technology, Bhopal</strong>
+          <span class="item-meta">Sept 2023 – Present</span>
+        </div>
+        <div class="item-header" style="font-size: 0.95rem; color: var(--text-muted);">
+          <span>Bachelor of Technology (B.Tech) in Computer Science and Engineering</span>
+          <span>Bhopal, India</span>
+        </div>
+        <p style="margin-top: 0.35rem; margin-bottom: 0; font-size: 0.92rem;">
+          • Cumulative GPA: <strong>8.68 / 10.00</strong>
+        </p>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Experience -->
+    <section class="resume-section">
+      <h2>Experience</h2>
+      <div class="resume-item" style="margin-bottom: 1.5rem;">
+        <div class="item-header">
+          <strong>Indian Institute of Technology, Delhi</strong>
+          <span class="item-meta">May 2026 – Jul 2026</span>
+        </div>
+        <div class="item-header" style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+          <span>Research Intern — MISN Lab (Project AdiVaani)</span>
+          <span>New Delhi, India</span>
+        </div>
+        <ul style="font-size: 0.92rem;">
+          <li>
+            Implemented Parameter-Efficient Fine-Tuning (PEFT/LoRA) and full fine-tuning of NLLB-200, Qwen, and Llama models for Neural Machine Translation (NMT) across low-resource Indian tribal languages using PyTorch and Hugging Face Transformers.
+          </li>
+          <li>
+            Trained, benchmarked, and evaluated models on NVIDIA A100 GPUs using BLEU, chrF/chrF++, and perplexity metrics, achieving performance gains up to 31.9 BLEU and 53.5 chrF++ via systematic hyperparameter optimization.
+          </li>
+          <li>
+            Explored Mixture-of-LoRA (MoA) adaptation techniques for low-resource Large Language Models (LLMs) by benchmarking state-of-the-art architectures, reproducing training pipelines, and developing experimental scripts to support future research.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Projects -->
+    <section class="resume-section">
+      <h2>Projects</h2>
+
+      <div class="resume-item" style="margin-bottom: 1.4rem;">
+        <div class="item-header">
+          <strong>Paperly: Semantic News Recommendation Engine</strong>
+          <a href="https://github.com/mkdir-smyk/paperly" target="_blank" rel="noopener noreferrer" class="item-meta">github.com/mkdir-smyk/paperly</a>
+        </div>
+        <div class="tech-stack">Tech Stack: Python, FastAPI, PyTorch, PostgreSQL (pgvector), NLP</div>
+        <ul style="font-size: 0.92rem; margin-top: 0.4rem;">
+          <li>Architected and containerized a real-time news aggregation platform using a custom FastAPI backend, PostgreSQL, and Docker Compose to efficiently fetch, deduplicate, and serve live articles.</li>
+          <li>Engineered a content-based recommendation system utilizing PyTorch (SentenceTransformers) to generate 384-dimensional dense embeddings, effectively bypassing the typical 'cold-start' problem.</li>
+          <li>Implemented vector similarity search via the pgvector extension, computing cosine distances directly at the database layer to serve highly relevant, cross-topic recommendations.</li>
+        </ul>
+      </div>
+
+      <div class="resume-item" style="margin-bottom: 1.4rem;">
+        <div class="item-header">
+          <strong>VisionMark — Intelligent Document-to-Markdown Pipeline</strong>
+          <a href="https://github.com/mkdir-smyk/VisionMark" target="_blank" rel="noopener noreferrer" class="item-meta">github.com/mkdir-smyk/VisionMark</a>
+        </div>
+        <div class="tech-stack">Tech Stack: Python, Qwen2.5-VL, Hugging Face, FastAPI</div>
+        <ul style="font-size: 0.92rem; margin-top: 0.4rem;">
+          <li>Engineered a hybrid document ingestion pipeline converting PDFs, Office documents (DOCX, PPTX, XLSX), raw images, Jupyter notebooks, and source code into structured Markdown optimized for LLM and RAG workflows.</li>
+          <li>Integrated Qwen2.5-VL VLM via Hugging Face Inference APIs to perform High-Accuracy OCR, layout understanding, and table extraction for scanned documents while preserving visual hierarchy.</li>
+          <li>Built a modular Python architecture featuring automatic document processor selection, an interactive web interface, and CLI support, enabling cloud deployment on Hugging Face Spaces.</li>
+        </ul>
+      </div>
+
+      <div class="resume-item" style="margin-bottom: 1.4rem;">
+        <div class="item-header">
+          <strong>Automated Audio Ingestion & Preprocessing Pipeline</strong>
+          <a href="https://github.com/mkdir-smyk/audio-ingestion-preprocessing-pipeline" target="_blank" rel="noopener noreferrer" class="item-meta">github.com/mkdir-smyk/audio-ingestion-preprocessing-pipeline</a>
+        </div>
+        <div class="tech-stack">Tech Stack: Python, PyTorch, FFmpeg, Silero VAD, Docker</div>
+        <ul style="font-size: 0.92rem; margin-top: 0.4rem;">
+          <li>Built an automated audio processing pipeline using Python and Docker to efficiently prepare large datasets for training speech models.</li>
+          <li>Standardized raw audio files using FFmpeg, converting diverse formats into a uniform standard (16kHz WAV) to ensure consistent data input.</li>
+          <li>Integrated Voice Activity Detection (VAD) to automatically remove silent segments, significantly saving storage space and reducing model training time.</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Technical Skills -->
+    <section class="resume-section">
+      <h2>Technical Skills</h2>
+      <ul style="font-size: 0.92rem; list-style-type: none; padding-left: 0;">
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Languages:</strong> Python, C++, SQL
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>ML & AI:</strong> PyTorch, Scikit-Learn, NumPy, Pandas, Hugging Face (Transformers, PEFT), LangGraph
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Backend & Database:</strong> FastAPI, PostgreSQL, REST APIs
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Infrastructure & Tools:</strong> Git, Bash, Docker, Weights & Biases (WandB)
+        </li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <!-- Certifications -->
+    <section class="resume-section">
+      <h2>Certifications</h2>
+      <ul style="font-size: 0.92rem;">
+        <li>
+          <strong>Hugging Face Agents Course Certification</strong> — <span class="item-meta">Aug 2026</span>
+        </li>
+        <li>
+          <strong>Google IT Support Professional Certificate</strong> — <span class="item-meta">Jan 2026</span>
+        </li>
+        <li>
+          <strong>IBM AI Developer Specialization</strong> (via Coursera) — <span class="item-meta">Dec 2025</span>
+        </li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <!-- Extracurricular Activities -->
+    <section class="resume-section">
+      <h2>Extracurricular Activities</h2>
+      <div class="resume-item">
+        <div class="item-header">
+          <strong>Blockchain Club (VIT Bhopal)</strong>
+          <span class="item-meta">Oct 2024 – Jul 2026</span>
+        </div>
+        <div class="item-header" style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.35rem;">
+          <span>Finance Head & Core Panel Member</span>
+          <span>Bhopal, India</span>
+        </div>
+        <ul style="font-size: 0.92rem;">
+          <li>Served as Core Panel Member, driving strategic club governance and leading end-to-end planning, financial budgeting, resource allocation, participant registration, and event logistics for a university-wide hackathon.</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- Contact -->
+    <section class="resume-section">
+      <h2>Contact</h2>
+      <p style="font-size: 0.92rem; margin-bottom: 0.35rem;">
+        Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </p>
+      <p style="font-size: 0.92rem; margin-bottom: 0.35rem;">
+        GitHub: <a href={SITE.github} target="_blank" rel="noopener noreferrer">{SITE.github.replace('https://', '')}</a>
+      </p>
+      <p style="font-size: 0.92rem; margin-bottom: 0;">
+        LinkedIn: <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">{SITE.linkedin.replace('https://', '')}</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>

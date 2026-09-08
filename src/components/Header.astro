@@ -1,0 +1,42 @@
+---
+import { SITE } from '../config';
+
+const pathname = Astro.url.pathname;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function getHref(path: string) {
+  if (path === '/') return baseUrl || '/';
+  return `${baseUrl}${path}`;
+}
+
+function isActive(path: string) {
+  const target = getHref(path);
+  if (path === '/') {
+    return pathname === '/' || pathname === baseUrl || pathname === `${baseUrl}/`;
+  }
+  return pathname.startsWith(target);
+}
+---
+
+<header class="site-header">
+  <div>
+    <a href={getHref('/')} class="site-title">{SITE.author}</a>
+  </div>
+  <nav aria-label="Main Navigation">
+    <ul class="site-nav">
+      {
+        SITE.nav.map((item) => (
+          <li>
+            <a
+              href={getHref(item.href)}
+              class={isActive(item.href) ? 'active' : ''}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
