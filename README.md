@@ -154,17 +154,16 @@ If your repository is named `<username>.github.io`:
 4. Under **Build and deployment > Source**, select **GitHub Actions**.
 5. The included workflow `.github/workflows/deploy.yml` will automatically build and deploy the site.
 
-### Option B: Project Page (`https://<username>.github.io/<repo-name>`)
-If your repository is named something like `portfolio`:
-1. Open `astro.config.mjs` and set:
-   ```javascript
-   export default defineConfig({
-     site: 'https://<username>.github.io',
-     base: '/<repo-name>/',
-     ...
-   });
+### Option B: Project Page (`https://<username>.github.io/soumyak/`)
+The site is already configured with `base: '/soumyak'`:
+1. Create a repository named `soumyak` on GitHub.
+2. Push your code:
+   ```bash
+   git remote add origin https://github.com/mkdir-smyk/soumyak.git
+   git push -u origin main
    ```
-2. Push to `main`. The deployment workflow will automatically deploy to GitHub Pages under that subpath.
+3. In GitHub repository settings: **Settings > Pages > Source**, select **GitHub Actions**.
+4. Your site will be live at `https://mkdir-smyk.github.io/soumyak/`.
 
 ---
 
